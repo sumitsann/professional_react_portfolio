@@ -1,4 +1,5 @@
 import React from "react";
+//import { capitalizeFirstLetter } from "../../utils/helpers";
 
 function Nav() {
   const categories = [
@@ -14,28 +15,39 @@ function Nav() {
       description: "Fields, farmhouses, waterfalls, and the beauty of nature",
     },
   ];
+  const handleClick = () => {
+    console.log("click handled");
+  };
   return (
-    <header>
+    <header data-testid="header" className="flex-row px-1">
       <h2>
         <a href="/">
           <span role="img" aria-label="camera">
             {" "}
-            🏟️
+            📸
           </span>{" "}
-          Prefessional Portfolio
+          Oh Snap!
         </a>
       </h2>
       <nav>
-        <ul>
-          <li>
-            <a href="#about">About me</a>
+        <ul className="flex-row">
+          <li className="mx-2">
+            <a href="#about" onClick={() => handleClick()}>
+              About me
+            </a>
           </li>
-          <li>
-            <span>Contact</span>
+          <li className={"mx-2"}>
+            <span onClick={() => handleClick()}>Contact</span>
           </li>
           {categories.map((category) => (
-            <li key={category.name}>
-              <span>{category.name}</span>
+            <li className="mx-1" key={category.name}>
+              <span
+                onClick={() => {
+                  handleClick();
+                }}
+              >
+                {category.name}
+              </span>
             </li>
           ))}
         </ul>
